@@ -1,0 +1,17 @@
+#images
+docker pull zookeeper:3.5.9
+docker pull includeno/kafka:1.0.0
+docker pull wurstmeister/kafka:2.13-2.6.0
+docker network create kafkanet
+##mac ip:host.docker.internal
+
+#arm
+docker-compose -f Docker-compose-arm64.yml up -d
+docker-compose -f Docker-compose-arm64.yml stop
+docker-compose -f Docker-compose-arm64.yml down
+
+#intel
+docker-compose -f Docker-compose-amd64.yml up -d
+docker-compose -f Docker-compose-amd64.yml stop
+docker-compose -f Docker-compose-amd64.yml down
+docker-compose scale kafka=3  #扩大集群范围
